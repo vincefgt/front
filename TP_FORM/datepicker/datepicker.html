@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Date Picker</title>
+</head>
+<body>
+    <div class="flex items-center justify-center w-full min-h-screen bg-gray-50">
+        <!-- Bouton d'ouverture -->
+        <button id="openPickerBtn" class="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg transition-all">
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <span>Sélectionner une période</span>
+            </div>
+        </button>
+
+        <!-- Date Picker Modal -->
+        <div id="pickerModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="flex bg-white shadow-lg rounded-xl">
+            <div class="flex flex-col">
+                <div class="flex divide-x">
+                    <!-- Calendrier gauche -->
+                    <div class="flex flex-col px-6 pt-5 pb-6 border-b border-gray-100">
+                        <div class="flex items-center justify-between mb-4">
+                            <button id="prevLeft" class="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
+                                <svg class="w-6 h-6 text-gray-900 stroke-current" fill="none">
+                                    <path d="M13.25 8.75L9.75 12l3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div id="monthLeft" class="text-sm font-semibold"></div>
+                            <button id="nextLeft" class="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
+                                <svg class="w-6 h-6 text-gray-900 stroke-current" fill="none">
+                                    <path d="M10.75 8.75l3.5 3.25-3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="calendarLeft" class="grid grid-cols-7 text-xs text-center text-gray-900"></div>
+                    </div>
+                    
+                    <!-- Calendrier droit -->
+                    <div class="flex flex-col px-6 pt-5 pb-6 border-b border-gray-100">
+                        <div class="flex items-center justify-between mb-4">
+                            <button id="prevRight" class="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
+                                <svg class="w-6 h-6 text-gray-900 stroke-current" fill="none">
+                                    <path d="M13.25 8.75L9.75 12l3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div id="monthRight" class="text-sm font-semibold"></div>
+                            <button id="nextRight" class="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
+                                <svg class="w-6 h-6 text-gray-900 stroke-current" fill="none">
+                                    <path d="M10.75 8.75l3.5 3.25-3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="calendarRight" class="grid grid-cols-7 text-xs text-center text-gray-900"></div>
+                    </div>
+                </div>
+                
+                <!-- Footer avec inputs et boutons -->
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center">
+                        <input id="startDate" type="text" class="flex items-center w-32 px-4 py-2 text-sm text-gray-900 rounded-lg bg-gray-50 focus:bg-white focus:ring-1 focus:ring-blue-600 focus:outline-none" placeholder="JJ / MM / AAAA" readonly/>
+                        <div class="p-1">
+                            <svg class="w-6 h-6 text-gray-900 stroke-current" fill="none">
+                                <path d="M6.738 12.012h10.5m-4.476 4.25l4.5-4.25-4.5-4.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <input id="endDate" type="text" class="flex items-center w-32 px-4 py-2 text-sm text-gray-900 rounded-lg bg-gray-50 focus:bg-white focus:ring-1 focus:ring-blue-600 focus:outline-none" placeholder="JJ / MM / AAAA" readonly/>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button id="cancelBtn" class="px-4 py-2 text-sm rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-600 hover:bg-gray-100">Annuler</button>
+                        <button id="setDateBtn" class="px-4 py-2 text-sm text-white bg-blue-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 hover:bg-blue-700">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="/TP_FORM/js/datepicker2.js"></script>
+</body>
+</html>

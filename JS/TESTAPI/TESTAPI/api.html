@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple API SWAPI</title>
+  <link rel="stylesheet" type="text/css" href="/TESTAPI/style/api.css">
+</head>
+<body>
+  <h1>Appel à l'API SWAPI</h1>
+  <p>Cliquez sur un bouton pour récupérer des données :</p>
+
+  <button onclick="getWithXHR()">Luke Skywalker (XMLHttpRequest)</button>
+  <button onclick="getWithFetch()">Luke Skywalker (Fetch)</button>
+  <button onclick="getWithAxios()">Luke Skywalker (Axios)</button>
+  <button onclick="getFilmWithAsyncAwait()">Film "A New Hope" (async/await)</button>
+
+  <h2>Résultat :</h2>
+  <div id="result">
+    <div class="spinner" id="spinner"></div>
+    Les données s'afficheront ici.
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/TESTAPI/script/api.js" type="text/javascript"></script>
+</body>
+</html>

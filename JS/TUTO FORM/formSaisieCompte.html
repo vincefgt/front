@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de Saisie</title>
+    <link rel="stylesheet" type="text/css" href="style/formsaisiecompte.css">
+    
+</head>
+<body>
+    <div class="form-container">
+        <h1>Formulaire de Saisie</h1>
+    </div>
+    
+    <div class="form-container">
+        <form id="userForm" action="compte.html" method="get">
+            <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+">
+                <div class="error" id="nomError"></div>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+">
+                <div class="error" id="prenomError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="dateAnniversaire">Date d'anniversaire :</label>
+                <input type="date" id="dateAnniversaire" name="dateAnniversaire" required>
+                <div class="error" id="dateAnniversaireError"></div>
+            </div>
+            <div class="form-group">
+                <label for="adresse">Adresse :</label>
+                <input type="text" id="adresse" name="adresse" required>
+                <div class="error" id="adresseError"></div>
+            </div>
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
+
+    <script src="script/formsaisiecompte.js"></script>
+</body>
+</html>

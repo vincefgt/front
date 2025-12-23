@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="frame">
+            <img class="picture-panel" src="style/v904-nunny-023.jpg">
+        </div>
+        <div class="frame">
+            <div class="frameVertical">
+                <a href="https\\:afpa.fr">
+                    <img src="style/afpa.gif" style="min-height: 80px; max-height: 150px;">
+                </a>
+                <h1 style="text-align: center; color: var(--primaryColorGreenLight);">Formulaire Autorisation d'absence</h1>
+                <form action="submit" method="get">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                        Valid first name is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                        Valid last name is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="date-naissance">Date de naissance :</label>
+                    <input type="date" id="date-naissance" name="date_naissance" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address.
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'Inscription</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/datepicker2.css">
+    <link rel="stylesheet" type="text/css" href="style/stylePrint.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-layout">
+            <!-- Colonne 1 / Img -->
+            <div class="left-column"> <!-- background en CSS -->
+                <div class="logo">✦</div>
+            </div>
+            <!-- Colonne 2 / data -->
+            <div class="right-column" id="formArea1" style="width: 45%;">
+                <div class="form-container">
+                    <div class="form-header">
+                        <!-- <div class="icon">✦</div> -->
+                        <div class="icon"><img src="style/afpa.gif" style="min-width: 50px"></div>
+                        <h1>Formulaire d'absence autorisé</h1>
+                        <p>Remplissez vos informations personnelles</p>
+                    </div>
+                    <form id="formStep0">
+                        <!--Firstname-->
+                        <div class="form-group">
+                            <label for="prenom">Prénom*</label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+                            <div class="error-message">Ce champ est requis</div>
+                        </div>
+                        <!--Lastname-->
+                        <div class="form-group">
+                            <label for="nom">Nom*</label>
+                            <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
+                            <div class="error-message">Ce champ est requis</div>
+                        </div>
+                        <!--Email-->
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="text" id="email" name="email" placeholder="Entrez votre email" required>
+                            <div class="error-message">Ce champ est requis</div>
+                        </div>
+                        <!--Date-->
+                        <div class="form-group">
+                            <!-- Bouton picker -->
+                            <button id="openPickerBtn" class="py-200 text-white bg-blue-600 rounded-[10px] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg transition-all" style="font-family: inherit;
+                            width: 100%; justify-items: center; padding: 2%; font-size: small;">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span style="font-size: large;">Sélectionner une période*</span>
+                                    <input id="dateInput" class="hidden" style="display: none;" required>    
+                                    </div>
+                            </button>
+                            <div class="error-message">Ce champ est requis</div>
+                        </div>
+                        <!--Time-->
+                        <div class="form-group">
+                            <label>Plage horaire</label>
+                            <div class="time-range">
+                                <input type="time" id="horaireStart" name="horaireStart">
+                                <span>à</span>
+                                <input type="time" id="horaireEnd" name="horaireEnd">
+                            </div>
+                            <div class="error-message">Ce champ est requis</div>
+                        </div>
+                        <!--Submit-->
+                        <button id="submit" type="button" class="btn-primary">
+                            <Span class="span-mother">
+                                <span style="padding-right: 5px;">✦</span>
+                                <span>C</span>
+                                <span>o</span>
+                                <span>n</span>
+                                <span>t</span>
+                                <span>i</span>
+                                <span>n</span>
+                                <span>u</span>
+                                <span>e</span>
+                                <span>r</span>
+                            </Span>
+                            <Span class="span-mother2">
+                                <span>✦</span>
+                                <span>C</span>
+                                <span>o</span>
+                                <span>n</span>
+                                <span>t</span>
+                                <span>i</span>
+                                <span>n</span>
+                                <span>u</span>
+                                <span>e</span>
+                                <span>r</span>
+                            </Span>
+                        </button>
+                        <p style="font-size: xx-small;padding-top: 5px;">(*) obligatoire</p>
+                    </form>
+                </div>
+            </div>
+            <!-- Colonne 3 / motifs -->
+            <div class="form-container" style="left: 100%; overflow: hidden; width: 45%;" id="formArea2"></div>
+        </div>
+
+         <!-- blur overlay -->
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <!-- Datepicker Modal -->
+        <div id="pickerModal" class="hidden">
+            <div class="picker-content">
+                <div class="calendar-container">
+                    <!-- Calendrier gauche -->
+                    <div class="calendar-panel">
+                        <div class="calendar-header">
+                            <button type="button" id="prevLeft">
+                                <svg width="24" height="24" fill="none" stroke="currentColor">
+                                    <path d="M13.25 8.75L9.75 12l3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div class="month-year" id="monthLeft"></div>
+                            <button type="button" id="nextLeft">
+                                <svg width="24" height="24" fill="none" stroke="currentColor">
+                                    <path d="M10.75 8.75l3.5 3.25-3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="calendarLeft" class="calendar-grid"></div>
+                    </div>
+
+                    <!-- Calendrier droit -->
+                    <div class="calendar-panel">
+                        <div class="calendar-header">
+                            <button type="button" id="prevRight">
+                                <svg width="24" height="24" fill="none" stroke="currentColor">
+                                    <path d="M13.25 8.75L9.75 12l3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div class="month-year" id="monthRight"></div>
+                            <button type="button" id="nextRight">
+                                <svg width="24" height="24" fill="none" stroke="currentColor">
+                                    <path d="M10.75 8.75l3.5 3.25-3.5 3.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="calendarRight" class="calendar-grid"></div>
+                    </div>
+                </div>
+
+                <div class="picker-footer">
+                    <div class="date-inputs">
+                        <input type="text" id="startDate" placeholder="JJ/MM/AAAA" readonly>
+                        <svg width="24" height="24" fill="none" stroke="currentColor">
+                            <path d="M6.738 12.012h10.5m-4.476 4.25l4.5-4.25-4.5-4.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="text" id="endDate" placeholder="JJ/MM/AAAA" readonly>
+                    </div>
+                    <div class="picker-actions">
+                        <button type="button" id="cancelBtn" class="btn-picker-cancel">Annuler</button>
+                        <button type="button" id="setDateBtn" class="btn-picker-validate">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- formPrint Modal-->
+        <div id="modalPrint" class="hidden">
+            <div id="formPrint" style="background-color: aliceblue; border-radius: 10px; padding: 10px;">
+                    <button id="button" class="group rounded-md shadow bg-blue-500 text-white cursor-pointer flex justify-start items-center overflow-hidden transition-all hover:glow" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);!important">
+                        <div class="relative w-20 h-20 bg-white/20 text-white flex justify-center items-center transition-all">
+                            <svg id="arrow" class="w-10 h-10 transition-all group-hover:-translate-y-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                            <svg id="check" class="absolute z-10 w-0 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        <div id="progress" class="absolute w-full h-0 bg-white/20 top-0 duration-200"></div>
+                        </div>
+                        <p class="px-5" style="padding-inline: 20px; font-weight: bold; width: 100%;">Envoyer par email</p>
+                    </button>
+                    <button id="button" class="group rounded-md shadow bg-blue-500 text-white cursor-pointer flex justify-start items-center overflow-hidden transition-all hover:glow" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);!important">
+                        <div class="relative w-20 h-20 bg-white/20 text-white flex justify-center items-center transition-all">
+                            <svg id="arrow" class="w-10 h-10 transition-all group-hover:translate-y-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                        <svg id="check" class="absolute z-10 w-0 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div id="progress" class="absolute w-full h-0 bg-white/20 top-0 duration-200"></div>
+                        </div>
+                        <p class="px-5" style="padding-inline: 20px; font-weight: bold; justify-content: center; width: 100%;">Imprimer</p>
+                    </button>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript" src="/TP_FORM/js/animation.js"></script>
+<script type="text/javascript" src="/TP_FORM/js/api.js"></script>
+<script type="text/javascript" src="/TP_FORM/js/datepicker2.js"></script>
+</body>
+</html>
